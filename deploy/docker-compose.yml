@@ -1,0 +1,18 @@
+# Orquestación local del dashboard.
+# Uso recomendado: ./scripts/deploy.sh up [--local]
+# Uso directo (desde la raíz del proyecto):
+#   docker compose -f deploy/docker-compose.yml up --build -d
+#   docker compose -f deploy/docker-compose.yml down
+name: dashboard-kpis
+
+services:
+  dashboard:
+    build:
+      context: ..                    # raíz del proyecto (donde está requirements.txt)
+      dockerfile: deploy/Dockerfile
+    image: dashboard-kpis:1.0.0
+    container_name: dashboard-kpis
+    ports:
+      # host:puerto_host:puerto_contenedor. DASHBOARD_HOST=127.0.0.1 => solo esta máquina
+      - "${DASHBOARD_HOST:-0.0.0.0}:${DASHBOARD_PORT:-8501}:8501"
+    restart: unless-stopped

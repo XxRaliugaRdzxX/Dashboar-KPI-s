@@ -1,0 +1,7 @@
+# Dependencias de ejecución del dashboard (versiones fijadas para reproducibilidad)
+streamlit==1.67.0
+streamlit-bokeh==3.10.1
+# streamlit-bokeh 3.10.1 exige exactamente esta versión de Bokeh
+bokeh==3.10.0
+pandas==3.1.1
+numpy==2.5.4
